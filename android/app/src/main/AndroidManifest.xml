@@ -2,7 +2,8 @@
   package="com.tranzact">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -19,6 +20,13 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.SEND"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:mimeType="text/plain"/>
+            <data android:mimeType="text/x-vcard"/>
+            <data android:mimeType="image/*"/>
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />

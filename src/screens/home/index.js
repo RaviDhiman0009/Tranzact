@@ -3,9 +3,20 @@ import { View, TouchableOpacity, Text } from 'react-native'
 import styles from './home.style'
 
 export default class Home extends Component {
-  goTo = (screen = false) => {
+  goTo = (screen = false, props) => {
     const { navigation } = this.props
-    screen && navigation.navigate(screen)
+    screen && navigation.navigate(screen, props)
+  }
+
+  componentDidMount () {
+    const {
+      route: {
+        params: { value, type }
+      }
+    } = this.props
+    if (value && type.includes('image')) {
+      this.goTo('ImageUpload', { value, type })
+    }
   }
 
   render () {
